@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/WalkPlayer.wav-d6396fd2f15a155685fea7ab20b41eb9.sample"
+
+[deps]
+
+source_file="res://Audio/WalkPlayer.wav"
+dest_files=[ "res://.import/WalkPlayer.wav-d6396fd2f15a155685fea7ab20b41eb9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

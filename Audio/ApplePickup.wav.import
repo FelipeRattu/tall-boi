@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ApplePickup.wav-57dd66f644df4df4a159e212a24c5cef.sample"
+
+[deps]
+
+source_file="res://Audio/ApplePickup.wav"
+dest_files=[ "res://.import/ApplePickup.wav-57dd66f644df4df4a159e212a24c5cef.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

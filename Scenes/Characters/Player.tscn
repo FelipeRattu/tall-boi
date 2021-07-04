@@ -1,0 +1,353 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Sprites/Player.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Characters/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Characters/PlayerPrimaryStateMachine.gd" type="Script" id=3]
+[ext_resource path="res://Audio/WalkPlayer.wav" type="AudioStream" id=4]
+[ext_resource path="res://Audio/Death.wav" type="AudioStream" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 8.9 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 17.9 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 26.9 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4, 35.9 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 4, 44.9 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Death"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -35 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("DyingParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Fall"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -35 ), Vector2( 0, -30.52 ), Vector2( 0, -35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -35 ), Vector2( 0, -30.52 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlayerSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -35 ), Vector2( 0, -31.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PlayerSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PlayerSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -1.0, 1.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("StepSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_mask = 6
+script = ExtResource( 2 )
+weightUp = 50.0
+weightDown = 400.0
+canMoveXAxis = true
+canMoveInTheAir = true
+acceleration = 0.2
+maxSpeed = 100.0
+defaultSpeed = 200.0
+defaultAirSpeed = 150.0
+jumpForce = 225.0
+numberOfJumps = 1
+colliders = [ NodePath("PlayerCollision"), NodePath("PlayerCollision2"), NodePath("PlayerCollision3"), NodePath("PlayerCollision4"), NodePath("PlayerCollision5") ]
+
+[node name="PlayerSprite" type="Sprite" parent="."]
+position = Vector2( 0, -35 )
+texture = ExtResource( 1 )
+hframes = 5
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+modulate = Color( 0.0313726, 0, 1, 1 )
+position = Vector2( 0, 1.1 )
+shape = SubResource( 1 )
+
+[node name="PlayerCollision2" type="CollisionShape2D" parent="."]
+visible = false
+modulate = Color( 0.0313726, 0, 1, 1 )
+position = Vector2( 0, -7.9 )
+shape = SubResource( 2 )
+disabled = true
+
+[node name="PlayerCollision3" type="CollisionShape2D" parent="."]
+visible = false
+modulate = Color( 0.0313726, 0, 1, 1 )
+position = Vector2( 0, -16.9 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="PlayerCollision4" type="CollisionShape2D" parent="."]
+visible = false
+modulate = Color( 0.0313726, 0, 1, 1 )
+position = Vector2( 0, -25.9 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="PlayerCollision5" type="CollisionShape2D" parent="."]
+visible = false
+modulate = Color( 0.0313726, 0, 1, 1 )
+position = Vector2( 0, -34.9 )
+shape = SubResource( 5 )
+disabled = true
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.3, 0.3 )
+limit_top = -100
+
+[node name="PlayerPrimaryStateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="DownRaycasts" type="Node2D" parent="."]
+position = Vector2( 0, 5 )
+
+[node name="Raycast" type="RayCast2D" parent="DownRaycasts"]
+modulate = Color( 0, 1, 0.0156863, 1 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+collision_mask = 2
+
+[node name="PlayerAnimator" type="AnimationPlayer" parent="."]
+anims/Death = SubResource( 6 )
+anims/Fall = SubResource( 7 )
+anims/Idle = SubResource( 8 )
+anims/Jump = SubResource( 9 )
+anims/Walk = SubResource( 10 )
+
+[node name="WalkParticles" type="CPUParticles2D" parent="."]
+position = Vector2( -4.43, 9 )
+rotation = -0.01468
+scale = Vector2( 1, 0.977268 )
+emitting = false
+amount = 4
+lifetime = 0.3
+emission_shape = 2
+emission_rect_extents = Vector2( 1, 1 )
+gravity = Vector2( -50, 5 )
+scale_amount = 2.0
+color = Color( 0.364706, 0.313726, 0.392157, 1 )
+
+[node name="DyingParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 2.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.7
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2( 1, 1 )
+spread = 0.0
+gravity = Vector2( 0, 0 )
+linear_accel = -46.75
+radial_accel = 70.0
+angle = 336.6
+angle_random = 1.0
+scale_amount = 1.5
+color = Color( 0.984314, 0.94902, 0.211765, 1 )
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "Player"
+
+[node name="StepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -15.0
+bus = "Player"
